@@ -1,0 +1,92 @@
+package abcpack;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+public class Registration_Project {
+	WebDriver d;
+	
+	
+
+	public static void main(String[] args) throws Exception {
+		
+		WebDriver d = new FirefoxDriver();
+		d.get("http://52.7.49.18/SectionOne");
+		d.manage().window().maximize();
+		d.findElement(By.xpath("//div[@id='wrapper']/header/section/div/a")).click();
+		
+		//Enter information in Basic profile screen
+		d.findElement(By.id("FirstName")).sendKeys("Test123");
+		d.findElement(By.id("LastName")).sendKeys("Password@143");
+		d.findElement(By.id("Email")).sendKeys("Demotesting279@gmail.com");
+		d.findElement(By.id("Password")).sendKeys("arunn@143");
+		d.findElement(By.id("ConfirmPassword")).sendKeys("arunn@143");
+		d.findElement(By.id("CompanyName")).sendKeys("VgyanItservices");
+		d.findElement(By.id("Title")).sendKeys("SeniorQA");
+		d.findElement(By.name("Phone")).sendKeys("8977338644");
+		d.findElement(By.xpath("//form[@id='myWizard']/div[2]/button[2]")).click();
+		
+		//Enter Company Profile information
+		
+		WebElement Automotivecheckbox = d.findElement(By.xpath("//form[@id='myWizard']/div/section[2]/div/div/div/div[2]/table/tbody/tr/td/div/ins"));
+		if (Automotivecheckbox.isSelected())
+		{
+			System.out.println("Automotive Checkbox is already selected");
+		}
+	
+		else
+		{
+			Automotivecheckbox.click();
+			
+		}
+		WebElement mediacheckbox = d.findElement(By.xpath("//form[@id='myWizard']/div/section[2]/div/div/div/div[2]/table/tbody/tr[2]/td/div/ins"));
+		
+		
+		if (mediacheckbox.isSelected())
+		{
+			System.out.println("Media checkbox is already selected");
+		}
+		else
+		{
+			mediacheckbox.click();
+		}
+		
+		//Dropdown
+		
+		Select NoEDD = new Select(d.findElement(By.id("NoOfEmp")));
+		NoEDD.selectByIndex(5);
+		
+		Select RevenueDD = new Select(d.findElement(By.id("Revenue")));
+		RevenueDD.selectByIndex(9);
+		
+		d.findElement(By.xpath("//form[@id='myWizard']/div[2]/button[2]")).click();
+		
+		//Invite Partner
+		
+		d.findElement(By.xpath("//input[@id='PartnerContactList_0__CompanyName']")).sendKeys("Partner1");
+		d.findElement(By.xpath("//input[@id='PartnerContactList_0__ContactName']")).sendKeys("Tester1");
+		d.findElement(By.xpath("//table[@id='partner-contacts']/tbody/tr[2]/td[4]/input")).sendKeys("demotesting@gmail.com");
+		Thread.sleep(3000);
+		d.findElement(By.xpath("//input[@id='PartnerContactList_0__EmailAddress']")).sendKeys("8977338600");
+		d.findElement(By.xpath("//button[@type='Save']")).click();
+		
+		
+		
+		
+
+		
+
+		
+				
+
+	}
+
+
+	}
+
+
